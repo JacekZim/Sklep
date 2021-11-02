@@ -18,5 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-    Route::get('/product', [Products::class, 'show']);
+    Route::get('/product/{id}', [Products::class, 'show'])->name('product_link');
     Route::get('/products', [Products::class, 'list']);

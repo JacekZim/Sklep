@@ -23,11 +23,12 @@
     <body class="antialiased">
 
        @foreach ($products as $product)
-           {{dd($product)}}
+
            <p>This is product {{ $product->name. number_format($product->price/100, 2 )}}</p>
+           <a href="{{route('product_link',['id'=>$product->id])}}">Szczegóły </a>
        @endforeach
 {{$products->links()}}
-       {{ $products->onEachSide(5)->links() }}
+
 
     </body>
 </html>

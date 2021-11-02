@@ -8,16 +8,16 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class Products extends Controller
 {
-    public function show()
+    public function show($id)
     {
         return view('product.view',
-            Product::query()->first()->toArray()
+            Product::query()->find($id)->toArray()
         );
     }
     public function list()
-    { $items=Product::query()->paginate(10);
+    {
         return view('product.list',
-            ['products'=>new LengthAwarePaginator($items, $items->count(),10)]
+            ['products'=>Product::query()->paginate(10)]
         );
     }
 }
