@@ -22,6 +22,7 @@
     </head>
     <body class="antialiased">
        <h1> {{$name}}</h1>
+       <h2><img src="{{asset('images/orzel.jpg')}}"></h2>
        <div> {{$description}}</div>
        <div> {{number_format($price/100, 2)}}</div>
     </body>

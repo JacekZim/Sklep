@@ -20,3 +20,4 @@ Route::get('/', function () {
 
     Route::get('/product/{id}', [Products::class, 'show'])->name('product_link');
     Route::get('/products', [Products::class, 'list']);
+    Route::post('/products', [Products::class, 'list'])->name('search_link');;
