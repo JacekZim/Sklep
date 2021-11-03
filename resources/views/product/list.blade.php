@@ -6,6 +6,10 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body class="antialiased">
+    <form action="/products" method="GET">
+        <input id="search" type="text" class="border-green-400 m-4 border-2 @error('title') is-invalid @enderror">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
     <div class="grid grid-cols-3 gap-4 bg-yellow-200">
 
 
