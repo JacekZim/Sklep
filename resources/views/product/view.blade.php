@@ -23,6 +23,7 @@
     <body class="antialiased">
        <h1> {{$name}}</h1>
        <h2><img src="{{asset('images/orzel.jpg')}}"></h2>
+       <a class="" href="{{route('cart_add',['id'=>$id])}}">Dodaj do koszyka </a>
        <div> {{$description}}</div>
        <div> {{number_format($price/100, 2)}}</div>
     </body>

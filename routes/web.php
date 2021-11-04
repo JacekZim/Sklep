@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Products;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +14,19 @@ use App\Http\Controllers\Products;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function() {
     return view('welcome');
 });
 
-    Route::get('/product/{id}', [Products::class, 'show'])->name('product_link');
-    Route::get('/products', [Products::class, 'list']);
-    Route::post('/products', [Products::class, 'list'])->name('search_link');;
+Route::get('/dashboard', function() {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+Route::get('/product/{id}', [Products::class, 'show'])->name('product_link');
+Route::get('/products', [Products::class, 'list'])->name('products');
+Route::post('/products', [Products::class, 'list'])->name('search_link');
+Route::get('/cart/{id}', [\App\Http\Controllers\Cart::class, 'add'])->name('cart_add');
+Route::get('/cart', [\App\Http\Controllers\Cart::class, 'show'])->name('cart');
+Route::get('/cart_delete/{id}', [\App\Http\Controllers\Cart::class, 'delete'])->name('cart_delete');
+Route::get('/cart_incrementation/{id}', [\App\Http\Controllers\Cart::class, 'incrementation'])->name('cart_incrementation');
+Route::get('/cart_decrementation/{id}', [\App\Http\Controllers\Cart::class, 'decrementation'])->name('cart_decrementation');
+require __DIR__ . '/auth.php';

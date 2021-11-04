@@ -15,15 +15,16 @@ class Products extends Controller
     }
 
     public function list(Request $request)
-    {dump ($request->post('search'));
-        dump (Product::query()->where('name', 'like', '%'.$request->post('search').'%')->toSql());
+    {
+
         $validated = $request->validate([
             'search' => 'min:3',
 
         ]);
+
         return view(
             'product.list',
-            ['products' => Product::query()->where('name', 'like', '%'.$request->post('search').'%')->paginate(10)]
+            ['products' => Product::query()->where('name', 'like', '%' . $request->post('search') . '%')->paginate(10)]
         );
     }
 }

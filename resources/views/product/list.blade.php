@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style >
+            
             .szczegoly{
                 color:mediumpurple;
                 font-weight:bold ;
@@ -26,8 +27,8 @@
     @endif
     <form action="{{route('search_link')}}" method="POST">
         @csrf
-        <input id="search" name="search" type="text" class="border-green-400 m-4 border-2 @error('search') bg-red-300 @enderror">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <input id="search" placeholder="szukaj" name="search" type="text" class="border-green-400 m-4 border-2 @error('search') bg-red-300 @enderror">
+        <input type="image" src="images/lupa.png" width="40" name="sub" />
     </form>
     <div class="grid grid-cols-3 gap-4 bg-yellow-200">
 
