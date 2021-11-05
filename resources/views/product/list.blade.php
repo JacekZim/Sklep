@@ -53,7 +53,7 @@ li{
 
        @foreach ($products as $product)
 <div class="bg-yellow-400" style="padding:10px">
-    <img src="{{storage_path('images\\').$product->image}}"width="100">
+    <img src="{{asset('storage/images/'.$product->image)}}"width="100">
            <p>This is product {{ $product->name. number_format($product->price/100, 2 )}}</p>
            <a class="szczegoly" href="{{route('product_link',['id'=>$product->id])}}">Szczegóły </a></div>
        @endforeach

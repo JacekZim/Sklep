@@ -18,7 +18,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->paragraph(3),
             'status' => $this->faker->boolean(),
             'cat_id' => $this->faker->randomElement([1, 2, 3, 4, 5, 6, 7, 8, 9]),
-            'image' => $this->faker->image(storage_path('images'),200,200, 'cats',false)
+            'image' => $this->faker->image(storage_path('app/public/images'),200,200, 'cats',false)
         ];
     }
 }

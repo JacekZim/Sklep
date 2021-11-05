@@ -23,20 +23,25 @@ class Products extends Controller
 
         ]);
         $category = Category::find($request->query('cat'));
-        $categories = $category->descendants()->pluck('id');
+        $categories = null;
+        if (null != $category) {
+            $categories = $category->descendants()->pluck('id');
 
-        // Include the id of category itself
-        $categories[] = $category->getKey();
-
+            // Include the id of category itself
+            $categories[] = $category->getKey();
+        }
         // Get goods
 
         $tree = Category::get()->toTree()->toArray();
+        $products_query = Product::query()
+            ->where('name', 'like', '%' . $request->post('search') . '%');
+        if (null != $categories) {
+            $products_query->whereIn('cat_id', $categories);
+        }
 
         return view(
             'product.list',
-            ['products' => Product::query()
-                ->where('name', 'like', '%' . $request->post('search') . '%')
-                ->whereIn('cat_id', $categories)
+            ['products' => $products_query
                 ->paginate(10),
                 'tree' => $tree,
 
