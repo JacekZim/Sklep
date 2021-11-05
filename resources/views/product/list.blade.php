@@ -5,7 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style >
-
+ul {
+    list-style: circle;
+margin-left: 30px;
+}
+li{
+    padding-left:10px;
+}
             .szczegoly{
                 color:mediumpurple;
                 font-weight:bold ;
@@ -25,6 +31,16 @@
             </ul>
         </div>
     @endif
+
+    @if (count($tree) > 0)
+        <ul>
+            @foreach ($tree as $cat)
+                @include('product.category', $cat)
+            @endforeach
+        </ul>
+
+    @endif
+    {{ app('request')->input('cat') }}
     <form action="{{route('search_link')}}" method="POST">
         @csrf
         <input id="search" placeholder="szukaj" name="search" type="text" class="border-green-400 m-4 border-2 @error('search') bg-red-300 @enderror">
@@ -33,9 +49,11 @@
     <div class="grid grid-cols-3 gap-4 bg-yellow-200">
 
 
+
+
        @foreach ($products as $product)
 <div class="bg-yellow-400" style="padding:10px">
-    <img src="{{$product->image}}"width="100">
+    <img src="{{storage_path('images\\').$product->image}}"width="100">
            <p>This is product {{ $product->name. number_format($product->price/100, 2 )}}</p>
            <a class="szczegoly" href="{{route('product_link',['id'=>$product->id])}}">Szczegóły </a></div>
        @endforeach

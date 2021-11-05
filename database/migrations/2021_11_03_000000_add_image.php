@@ -13,11 +13,10 @@ class AddImage extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->string('image',200)->nullable();
-
+        Schema::table('products', function(Blueprint $table) {
+            $table->string('image', 200)->nullable();
         });
-        \Illuminate\Support\Facades\DB::update("update products set image='https://cataas.com/cat'");
+        //\Illuminate\Support\Facades\DB::update("update products set image='https://cataas.com/cat'");
     }
 
     /**
@@ -27,7 +26,7 @@ class AddImage extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table){
+        Schema::table('products', function(Blueprint $table) {
             $table->dropColumn('image');
         });
     }
