@@ -19,6 +19,54 @@ li{
                 padding:3px;
                 background-color:white ;
             }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover  {
+    background-color: red;
+}
+
+.drop1 {
+    display: none;
+    position: absolute;
+
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+li.li1:hover ul.drop1 {
+    display: block;
+}
+.drop2 {
+    display : none;
+}
+.drop2 li{
+    clear: both;
+}
+li.li2:hover ul.drop2{
+    display: block;
+    
+}
+
         </style>
     </head>
     <body class="antialiased">
@@ -31,16 +79,18 @@ li{
             </ul>
         </div>
     @endif
-
+@php
+    $level=0;
+@endphp
     @if (count($tree) > 0)
         <ul>
             @foreach ($tree as $cat)
-                @include('product.category', $cat)
+                @include('product.category', [$cat,$level])
             @endforeach
         </ul>
 
     @endif
-    {{ app('request')->input('cat') }}
+
     <form action="{{route('search_link')}}" method="POST">
         @csrf
         <input id="search" placeholder="szukaj" name="search" type="text" class="border-green-400 m-4 border-2 @error('search') bg-red-300 @enderror">
