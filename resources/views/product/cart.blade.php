@@ -10,7 +10,10 @@
                 font-weight:bold ;
                 border:1px solid blue;
                 padding:3px;
-                background-color:white ;
+                background-color:DarkGray ;
+            }
+            body {
+                background-color: #4a5568;
             }
         </style>
     </head>
@@ -22,6 +25,7 @@
            <a class="szczegoly" href="{{route('cart_delete',['id'=>$cart->id])}}">Usuń </a>
            <a class="szczegoly" href="{{route('cart_incrementation',['id'=>$cart->id])}}">Dodaj </a>
            <a class="szczegoly" href="{{route('cart_decrementation',['id'=>$cart->id])}}">Zmniejsz </a>
+
        @endforeach
        <br />
        <br />

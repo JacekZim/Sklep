@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/category', [\App\Http\Controllers\Cat::class, 'add'])->name('category_add');
+Route::delete('/category/{id}', [\App\Http\Controllers\Cat::class, 'delete'])->name('category_delete');
+Route::patch('/category', [\App\Http\Controllers\Cat::class, 'change'])->name('category_change');

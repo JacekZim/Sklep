@@ -11,4 +11,7 @@ class Category extends Model
 
     use NodeTrait;
     public $timestamps=false;
+    protected $fillable = [
+        'name'
+    ];
 }

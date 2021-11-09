@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style >
+            body {
+                background-color: #4a5568;
+            }
 ul {
     list-style: circle;
 margin-left: 30px;
@@ -64,12 +67,17 @@ li.li1:hover ul.drop1 {
 }
 li.li2:hover ul.drop2{
     display: block;
-    
+
+}
+#lupa {
+    height: 40px;
+    vertical-align: middle;
 }
 
         </style>
     </head>
     <body class="antialiased">
+
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -79,9 +87,11 @@ li.li2:hover ul.drop2{
             </ul>
         </div>
     @endif
+
 @php
     $level=0;
 @endphp
+
     @if (count($tree) > 0)
         <ul>
             @foreach ($tree as $cat)
@@ -89,12 +99,22 @@ li.li2:hover ul.drop2{
             @endforeach
         </ul>
 
+
+
+    @endif
+    @if (!empty($path))
+
+        @foreach($path[0]['ancestors'] as $ancestor)
+            {{$ancestor['name']}} >
+
+        @endforeach
+        {{$path[0]['name']}}
     @endif
 
     <form action="{{route('search_link')}}" method="POST">
         @csrf
         <input id="search" placeholder="szukaj" name="search" type="text" class="border-green-400 m-4 border-2 @error('search') bg-red-300 @enderror">
-        <input type="image" src="images/lupa.png" width="40" name="sub" />
+        <input id="lupa" type="image" src="images/lupa.png" width="40" name="sub"  />
     </form>
     <div class="grid grid-cols-3 gap-4 bg-yellow-200">
 
