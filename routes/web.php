@@ -29,4 +29,6 @@ Route::get('/cart', [\App\Http\Controllers\Cart::class, 'show'])->name('cart');
 Route::get('/cart_delete/{id}', [\App\Http\Controllers\Cart::class, 'delete'])->name('cart_delete');
 Route::get('/cart_incrementation/{id}', [\App\Http\Controllers\Cart::class, 'incrementation'])->name('cart_incrementation');
 Route::get('/cart_decrementation/{id}', [\App\Http\Controllers\Cart::class, 'decrementation'])->name('cart_decrementation');
+Route::post('/order', [\App\Http\Controllers\Order::class, 'add'])->name('order');
+
 require __DIR__ . '/auth.php';
