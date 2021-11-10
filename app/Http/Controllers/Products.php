@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use function PHPUnit\Framework\isFalse;
 
 class Products extends Controller
 {
@@ -25,7 +24,7 @@ class Products extends Controller
         ]);
         $category = Category::find($request->query('cat'));
         $categories = null;
-        $path=[];
+        $path = [];
         if (null != $category) {
             $path = Category::with('ancestors')->where('id', $request->query('cat'))->get();
             $categories = $category->descendants()->pluck('id');
@@ -42,13 +41,10 @@ class Products extends Controller
             $products_query->whereIn('cat_id', $categories);
         }
 
+        if (!is_array($path)) {
+            $path->toArray();
+        }
 
-if(is_array($path)){
-
-}
-else {
-    $path->toArray();
-}
         return view(
             'product.list',
             ['products' => $products_query
