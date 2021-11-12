@@ -12,6 +12,9 @@
                 padding:3px;
                 background-color:DarkGray ;
             }
+            .cos{
+                color: yellowgreen;
+            }
             body {
                 background-color: #4a5568;
             }
@@ -35,7 +38,7 @@
        @endforeach
        <br />
        <br />
-       <input type="submit" value="Złóż zamówienie"/>
+       <input style="cos" type="submit" value="Złóż zamówienie"/>
        <br />
        <br />
         <input  placeholder="Imię i Nazwisko" name="name" type="text" class="border-green-400 m-4 border-2 @error('name') bg-red-300 @enderror">
