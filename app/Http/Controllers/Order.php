@@ -7,6 +7,14 @@ use Illuminate\Support\Facades\Auth;
 
 class Order extends Controller
 {
+    /**
+     *
+     *
+     *
+     * @todo jdigfsi
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function add(Request $request)
     {
         $validated = $request->validate(

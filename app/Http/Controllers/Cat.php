@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Validation\ValidationException;
 
 class Cat extends Controller
@@ -14,20 +15,22 @@ class Cat extends Controller
             'parent' => 'required|int',
 
         ]);
-        $cat = Category::create(['name' => $validated['name']], Category::find($validated['parent']));
+        Cache::add('test','cokoliwek');
+       // $cat = Category::create(['name' => $validated['name']], Category::find($validated['parent']));
 
-        return response()->json($cat);
+        return response()->noContent();
     }
 
     public function delete($id)
     {
-        $fun = \App\Models\Category::query()->where('id', $id)->first();
+       // $fun = \App\Models\Category::query()->where('id', $id)->first();
 
-        if ($fun) {
-            $fun->delete();
-        }
+       // if ($fun) {
+      //      $fun->delete();
+     //  }
+$test = Cache::get('test');
 
-        return response()->noContent();
+        return response()->json(['test'=>$test]);
     }
 
     public function change(Request $request)
